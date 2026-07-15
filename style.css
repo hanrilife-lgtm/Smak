@@ -248,7 +248,7 @@ HERO
 .hero-bg {
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.35)), url("hol.jpg");
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.35)), url("hol1.jpg");
     background-size: cover;
     background-position: center;
 }
