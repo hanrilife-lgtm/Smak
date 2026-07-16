@@ -10,6 +10,10 @@ window.addEventListener("load", function() {
     }
 });
 
+// ================================
+// HEADER BLUR
+// ================================
+
 var header = document.querySelector(".header");
 
 window.addEventListener("scroll", function() {
@@ -19,6 +23,10 @@ window.addEventListener("scroll", function() {
         header.classList.remove("active");
     }
 });
+
+// ================================
+// MOBILE MENU
+// ================================
 
 document.addEventListener("DOMContentLoaded", function() {
     var menuBtn = document.querySelector(".mobile-menu");
@@ -50,6 +58,10 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
+// ================================
+// BOOKING FORM
+// ================================
+
 var bookingForm = document.querySelector(".booking form");
 
 if (bookingForm) {
@@ -68,5 +80,36 @@ if (bookingForm) {
         }, 3000);
     });
 }
+
+// ================================
+// АККОРДЕОН МЕНЮ
+// ================================
+
+document.addEventListener("DOMContentLoaded", function() {
+    var headers = document.querySelectorAll(".menu-category-header");
+
+    headers.forEach(function(header) {
+        header.addEventListener("click", function() {
+            var category = this.parentElement;
+            var isActive = category.classList.contains("active");
+
+            // Закрываем все категории
+            document.querySelectorAll(".menu-category").forEach(function(cat) {
+                cat.classList.remove("active");
+            });
+
+            // Открываем текущую, если она была закрыта
+            if (!isActive) {
+                category.classList.add("active");
+            }
+        });
+    });
+
+    // По умолчанию открыта первая категория
+    var firstCategory = document.querySelector(".menu-category");
+    if (firstCategory) {
+        firstCategory.classList.add("active");
+    }
+});
 
 console.log("СМАК сайт загружен");
