@@ -92,7 +92,6 @@ HEADER
     backdrop-filter: blur(3px);
 }
 
-/* БЛЮР НА ХЕДЕРЕ */
 .header.active {
     background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(20px);
@@ -155,10 +154,6 @@ HEADER
 .mobile-menu.active i {
     transform: rotate(90deg);
 }
-
-/* =========================
-NAV MOBILE ACTIVE
-========================= */
 
 .nav.open {
     display: flex !important;
@@ -233,6 +228,17 @@ BUTTONS
     border-color: #fff;
 }
 
+.menu-button-wrapper {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.menu-button {
+    display: flex;
+    width: max-content;
+    margin: 0 auto;
+}
+
 /* =========================
 HERO
 ========================= */
@@ -248,7 +254,7 @@ HERO
 .hero-bg {
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.35)), url("hol1.jpg");
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.35)), url("hol11.jpg");
     background-size: cover;
     background-position: center;
 }
@@ -408,41 +414,49 @@ FEATURES
 }
 
 /* =========================
-MENU
+ПОПУЛЯРНОЕ МЕНЮ (на главной)
 ========================= */
 
-.menu-grid {
-    margin-top: 70px;
+.popular-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
+    margin-top: 50px;
 }
 
-.dish {
+.popular-grid .dish {
     background: #111;
-    overflow: hidden;
     border-radius: 16px;
+    overflow: hidden;
+    transition: 0.4s;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.dish img {
-    height: 350px;
+.popular-grid .dish:hover {
+    transform: translateY(-10px);
+    border-color: var(--gold);
+}
+
+.popular-grid .dish img {
+    height: 250px;
     object-fit: cover;
     transition: 0.5s;
 }
 
-.dish:hover img {
-    transform: scale(1.08);
+.popular-grid .dish:hover img {
+    transform: scale(1.05);
 }
 
-.dish h3 {
-    padding: 25px 25px 10px;
+.popular-grid .dish h3 {
+    padding: 20px 25px 5px;
     font-family: 'Cormorant Garamond', serif;
-    font-size: 35px;
+    font-size: 28px;
 }
 
-.dish p {
+.popular-grid .dish p {
     padding: 0 25px 25px;
-    color: var(--gold);
+    color: #999;
+    font-size: 14px;
 }
 
 /* =========================
@@ -529,10 +543,6 @@ BOOKING
     font-family: 'Inter', sans-serif;
 }
 
-/* =========================
-ДАТА — БЕЛАЯ ИКОНКА
-========================= */
-
 .booking input[type="date"] {
     color-scheme: dark;
     color: #fff;
@@ -617,6 +627,15 @@ CONTACTS FULL (на главной)
     font-size: 18px;
 }
 
+.contact-item-full a {
+    color: #fff;
+    transition: 0.3s;
+}
+
+.contact-item-full a:hover {
+    color: var(--gold);
+}
+
 .social-buttons-full {
     display: flex;
     gap: 20px;
@@ -654,64 +673,6 @@ CONTACTS FULL (на главной)
     width: 100%;
     height: 100%;
     border: 0;
-}
-
-/* =========================
-АДАПТИВ ДЛЯ КОНТАКТОВ
-========================= */
-
-@media (max-width: 900px) {
-    .contact-grid-full {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-
-    .contact-info-full h3 {
-        font-size: 36px;
-        margin-bottom: 30px;
-    }
-
-    .map-box-full {
-        height: 350px;
-    }
-
-    .contact-item-full i {
-        font-size: 32px;
-        min-width: 40px;
-    }
-
-    .social-buttons-full {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .social-full {
-        width: 100%;
-        justify-content: center;
-    }
-}
-
-@media (max-width: 500px) {
-    .contact-info-full h3 {
-        font-size: 28px;
-    }
-
-    .contact-item-full {
-        gap: 15px;
-    }
-
-    .contact-item-full i {
-        font-size: 28px;
-        min-width: 35px;
-    }
-
-    .contact-item-full p {
-        font-size: 15px;
-    }
-
-    .map-box-full {
-        height: 250px;
-    }
 }
 
 /* =========================
@@ -778,9 +739,12 @@ MOBILE
     }
 
     .about-grid,
-    .features-grid,
-    .menu-grid {
+    .features-grid {
         grid-template-columns: 1fr;
+    }
+
+    .popular-grid {
+        grid-template-columns: 1fr 1fr;
     }
 
     .section-title h2 {
@@ -812,8 +776,66 @@ MOBILE
         font-size: 50px;
     }
 
-    .event-grid {
-        grid-template-columns: 1fr 1fr;
+    .contact-grid-full {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .contact-info-full h3 {
+        font-size: 36px;
+        margin-bottom: 30px;
+    }
+
+    .map-box-full {
+        height: 350px;
+    }
+
+    .contact-item-full i {
+        font-size: 32px;
+        min-width: 40px;
+    }
+
+    .social-buttons-full {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .social-full {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .popular-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .popular-grid .dish img {
+        height: 200px;
+    }
+
+    .full-menu .menu-item {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+    }
+
+    .full-menu .menu-item img {
+        width: 100%;
+        height: 200px;
+    }
+
+    .full-menu .menu-item strong {
+        align-self: flex-start;
+    }
+
+    .full-menu .menu-category h3 {
+        font-size: 32px;
+    }
+
+    .page-hero h1 {
+        font-size: 70px;
     }
 }
 
@@ -854,14 +876,6 @@ MOBILE
         font-size: 35px;
     }
 
-    .dish img {
-        height: 220px;
-    }
-
-    .dish h3 {
-        font-size: 28px;
-    }
-
     .banquet h2 {
         font-size: 36px;
     }
@@ -878,18 +892,30 @@ MOBILE
         font-size: 28px;
     }
 
-    .contacts p {
-        font-size: 16px;
+    .contact-info-full h3 {
+        font-size: 28px;
     }
 
-    .event-grid {
-        grid-template-columns: 1fr;
+    .contact-item-full {
+        gap: 15px;
+    }
+
+    .contact-item-full i {
+        font-size: 28px;
+        min-width: 35px;
+    }
+
+    .contact-item-full p {
+        font-size: 15px;
+    }
+
+    .map-box-full {
+        height: 250px;
     }
 }
 
-
 /* =========================
-   MENU PAGE
+MENU PAGE
 ========================= */
 
 .page-hero {
@@ -901,7 +927,7 @@ MOBILE
             rgba(0, 0, 0, .65),
             rgba(0, 0, 0, .8)
         ),
-        url("assets/img/menu-bg.jpg");
+        url("hol11.jpg");
     background-size: cover;
     background-position: center;
 }
@@ -923,118 +949,80 @@ MOBILE
 }
 
 /* =========================
-   MENU CATEGORY
+FULL MENU (на странице menu.html)
 ========================= */
 
-.menu-category {
-    margin-bottom: 100px;
+.full-menu .menu-category {
+    margin-bottom: 70px;
 }
 
-.menu-category h2 {
-    font-family: 'Cormorant Garamond';
-    font-size: 60px;
-    margin-bottom: 50px;
+.full-menu .menu-category h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 45px;
+    color: var(--gold);
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 15px;
 }
 
-/* =========================
-   MENU ITEMS
-========================= */
-
-.menu-items {
+.full-menu .menu-items {
     display: grid;
-    gap: 30px;
+    gap: 15px;
 }
 
-/* =========================
-   MENU ITEM
-========================= */
-
-.menu-item {
+.full-menu .menu-item {
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 25px;
     background: #111;
-    padding: 25px;
-    border: 1px solid rgba(255, 255, 255, .08);
-    transition: .4s;
+    padding: 15px 25px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 12px;
+    transition: 0.3s;
 }
 
-.menu-item:hover {
+.full-menu .menu-item:hover {
     border-color: var(--gold);
     transform: translateX(10px);
 }
 
-.menu-item img {
-    width: 150px;
-    height: 120px;
+.full-menu .menu-item img {
+    width: 100px;
+    height: 80px;
     object-fit: cover;
     border-radius: 8px;
 }
 
-.menu-item div {
+.full-menu .menu-item div {
     flex: 1;
 }
 
-.menu-item h3 {
-    font-family: 'Cormorant Garamond';
-    font-size: 35px;
+.full-menu .menu-item h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
 }
 
-.menu-item p {
+.full-menu .menu-item p {
     color: #999;
-    margin-top: 10px;
+    font-size: 14px;
+    margin-top: 3px;
 }
 
-.menu-item strong {
-    font-size: 25px;
+.full-menu .menu-item strong {
+    font-size: 20px;
     color: var(--gold);
+    white-space: nowrap;
 }
 
 /* =========================
-   MENU BUTTON
-========================= */
-
-.menu-button {
-    display: flex;
-    width: max-content;
-    margin: auto;
-}
-
-/* =========================
-   ADAPTIVE
-========================= */
-
-@media (max-width: 700px) {
-    .page-hero h1 {
-        font-size: 70px;
-    }
-
-    .menu-item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .menu-item img {
-        width: 100%;
-        height: 220px;
-    }
-}
-
-/* =========================
-   BANQUETS PAGE
+BANQUETS PAGE
 ========================= */
 
 .banquet-hero {
     height: 90vh;
     display: flex;
     align-items: center;
-    background:
-        linear-gradient(
-            rgba(0, 0, 0, .6),
-            rgba(0, 0, 0, .8)
-        ),
-        url("assets/img/wedding.jpg");
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.35)), url("hol11.jpg");
     background-size: cover;
     background-position: center;
 }
@@ -1059,7 +1047,7 @@ MOBILE
 }
 
 /* =========================
-   EVENT GRID
+EVENT GRID
 ========================= */
 
 .event-grid {
@@ -1100,7 +1088,7 @@ MOBILE
 }
 
 /* =========================
-   HALLS
+HALLS
 ========================= */
 
 .halls {
@@ -1140,7 +1128,7 @@ MOBILE
 }
 
 /* =========================
-   BANQUET GALLERY
+BANQUET GALLERY
 ========================= */
 
 .banquet-gallery {
@@ -1162,7 +1150,7 @@ MOBILE
 }
 
 /* =========================
-   OFFER
+OFFER
 ========================= */
 
 .offer {
@@ -1204,27 +1192,7 @@ MOBILE
 }
 
 /* =========================
-   ADAPTIVE
-========================= */
-
-@media (max-width: 900px) {
-    .banquet-hero h1 {
-        font-size: 60px;
-    }
-
-    .event-grid,
-    .hall-grid,
-    .offer-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .hall-grid img {
-        height: 400px;
-    }
-}
-
-/* =========================
-   GALLERY PAGE
+GALLERY PAGE
 ========================= */
 
 .gallery-hero {
@@ -1258,7 +1226,7 @@ MOBILE
 }
 
 /* =========================
-   GALLERY FILTER
+GALLERY FILTER
 ========================= */
 
 .gallery-filter {
@@ -1289,7 +1257,7 @@ MOBILE
 }
 
 /* =========================
-   PREMIUM GALLERY
+PREMIUM GALLERY
 ========================= */
 
 .premium-gallery {
@@ -1317,10 +1285,6 @@ MOBILE
     transform: scale(1.1);
 }
 
-/* =========================
-   GALLERY OVERLAY
-========================= */
-
 .gallery-overlay {
     position: absolute;
     inset: 0;
@@ -1341,10 +1305,6 @@ MOBILE
     opacity: 1;
 }
 
-/* =========================
-   GALLERY SIZES
-========================= */
-
 .tall {
     grid-row: span 2;
 }
@@ -1354,7 +1314,7 @@ MOBILE
 }
 
 /* =========================
-   GALLERY CTA
+GALLERY CTA
 ========================= */
 
 .gallery-cta {
@@ -1375,7 +1335,7 @@ MOBILE
 }
 
 /* =========================
-   LIGHTBOX
+LIGHTBOX
 ========================= */
 
 .lightbox {
@@ -1413,29 +1373,7 @@ MOBILE
 }
 
 /* =========================
-   ADAPTIVE
-========================= */
-
-@media (max-width: 900px) {
-    .gallery-hero h1 {
-        font-size: 70px;
-    }
-
-    .premium-gallery {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .wide {
-        grid-column: auto;
-    }
-
-    .tall {
-        grid-row: auto;
-    }
-}
-
-/* =========================
-   CONTACT PAGE
+CONTACT PAGE
 ========================= */
 
 .contacts-hero {
@@ -1468,10 +1406,6 @@ MOBILE
     color: #ddd;
 }
 
-/* =========================
-   CONTACT GRID
-========================= */
-
 .contact-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1484,10 +1418,6 @@ MOBILE
     font-size: 70px;
     margin-bottom: 50px;
 }
-
-/* =========================
-   CONTACT ITEMS
-========================= */
 
 .contact-item {
     display: flex;
@@ -1509,10 +1439,6 @@ MOBILE
     color: #aaa;
     font-size: 18px;
 }
-
-/* =========================
-   SOCIAL BUTTONS
-========================= */
 
 .social-buttons {
     display: flex;
@@ -1541,10 +1467,6 @@ MOBILE
     font-size: 22px;
 }
 
-/* =========================
-   MAP
-========================= */
-
 .map-box {
     height: 600px;
     overflow: hidden;
@@ -1556,10 +1478,6 @@ MOBILE
     height: 100%;
     border: 0;
 }
-
-/* =========================
-   CALLBACK
-========================= */
 
 .callback {
     padding: 120px 0;
@@ -1613,12 +1531,42 @@ MOBILE
 }
 
 /* =========================
-   ADAPTIVE
+ADAPTIVE
 ========================= */
 
 @media (max-width: 900px) {
+    .page-hero h1 {
+        font-size: 70px;
+    }
+
+    .banquet-hero h1 {
+        font-size: 60px;
+    }
+
+    .gallery-hero h1 {
+        font-size: 70px;
+    }
+
     .contacts-hero h1 {
         font-size: 70px;
+    }
+
+    .event-grid,
+    .hall-grid,
+    .offer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .premium-gallery {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .wide {
+        grid-column: auto;
+    }
+
+    .tall {
+        grid-row: auto;
     }
 
     .contact-grid {
@@ -1635,5 +1583,25 @@ MOBILE
 
     .callback-box h2 {
         font-size: 50px;
+    }
+
+    .hall-grid img {
+        height: 400px;
+    }
+}
+
+@media (max-width: 700px) {
+    .page-hero h1 {
+        font-size: 70px;
+    }
+
+    .menu-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .menu-item img {
+        width: 100%;
+        height: 220px;
     }
 }
