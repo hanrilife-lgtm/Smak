@@ -93,4 +93,75 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
+// ================================
+// ОТПРАВКА ФОРМЫ В GOOGLE APPS SCRIPT
+// ================================
+
+var bookingForm = document.querySelector(".booking form");
+
+if (bookingForm) {
+    bookingForm.addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        var formData = new FormData(this);
+        var name = formData.get("Имя") || "Не указано";
+        var phone = formData.get("Телефон") || "Не указан";
+        var date = formData.get("Дата") || "Не указана";
+        var guests = formData.get("Гости") || "Не указано";
+
+        // === ВАШ URL ИЗ GOOGLE APPS SCRIPT ===
+        var url = "https://script.google.com/macros/s/AKfycbz00VZuQaRq1akKUwNLQl9EFUWF_Eyw7wubWqwBIWWRF3TEvDLXC78_xD39ts8jfCel/exec";
+
+        var button = this.querySelector("button");
+        var originalText = button.innerHTML;
+
+        button.innerHTML = "⏳ Отправка...";
+        button.style.opacity = "0.7";
+        button.disabled = true;
+
+        fetch(url, {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name: name,
+                phone: phone,
+                date: date,
+                guests: guests
+            })
+        })
+        .then(function() {
+            button.innerHTML = "✅ Заявка отправлена!";
+            button.style.background = "#1f8f4d";
+            button.style.color = "#fff";
+            button.style.opacity = "1";
+            button.disabled = false;
+
+            setTimeout(function() {
+                button.innerHTML = originalText;
+                button.style.background = "";
+                button.style.color = "";
+                button.style.opacity = "1";
+                bookingForm.reset();
+            }, 3000);
+        })
+        .catch(function() {
+            button.innerHTML = "❌ Ошибка соединения";
+            button.style.background = "#d32f2f";
+            button.style.color = "#fff";
+            button.style.opacity = "1";
+            button.disabled = false;
+
+            setTimeout(function() {
+                button.innerHTML = originalText;
+                button.style.background = "";
+                button.style.color = "";
+                button.style.opacity = "1";
+            }, 3000);
+        });
+    });
+}
+
 console.log("СМАК сайт загружен");
