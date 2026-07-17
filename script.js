@@ -1,3 +1,12 @@
+/* =================================
+   SMAK RESTAURANT
+   PREMIUM JAVASCRIPT
+================================= */
+
+// ================================
+// LOADER
+// ================================
+
 window.addEventListener("load", function() {
     var loader = document.querySelector(".loader");
     if (loader) {
@@ -39,7 +48,6 @@ document.addEventListener("DOMContentLoaded", function() {
             this.classList.toggle("active");
         });
 
-        // закрытие при клике на ссылку
         var links = document.querySelectorAll(".nav a");
         for (var i = 0; i < links.length; i++) {
             links[i].addEventListener("click", function() {
@@ -48,7 +56,6 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         }
 
-        // закрытие при клике вне меню
         document.addEventListener("click", function(e) {
             if (nav.classList.contains("open") && !nav.contains(e.target) && !menuBtn.contains(e.target)) {
                 nav.classList.remove("open");
@@ -57,29 +64,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
-
-// ================================
-// BOOKING FORM
-// ================================
-
-var bookingForm = document.querySelector(".booking form");
-
-if (bookingForm) {
-    bookingForm.addEventListener("submit", function(e) {
-        e.preventDefault();
-
-        var button = this.querySelector("button");
-
-        button.innerHTML = "Заявка отправлена ✓";
-        button.style.background = "#1f8f4d";
-
-        setTimeout(function() {
-            button.innerHTML = "Отправить заявку";
-            button.style.background = "";
-            bookingForm.reset();
-        }, 3000);
-    });
-}
 
 // ================================
 // АККОРДЕОН МЕНЮ
@@ -93,19 +77,16 @@ document.addEventListener("DOMContentLoaded", function() {
             var category = this.parentElement;
             var isActive = category.classList.contains("active");
 
-            // Закрываем все категории
             document.querySelectorAll(".menu-category").forEach(function(cat) {
                 cat.classList.remove("active");
             });
 
-            // Открываем текущую, если она была закрыта
             if (!isActive) {
                 category.classList.add("active");
             }
         });
     });
 
-    // По умолчанию открыта первая категория
     var firstCategory = document.querySelector(".menu-category");
     if (firstCategory) {
         firstCategory.classList.add("active");
