@@ -26,7 +26,6 @@
 <header class="header">
     <div class="container nav-container">
         <a class="logo">СМАК</a>
-
         <nav class="nav">
             <a href="#about">О ресторане</a>
             <a href="#menu">Меню</a>
@@ -34,9 +33,7 @@
             <a href="#gallery">Галерея</a>
             <a href="#contacts">Контакты</a>
         </nav>
-
         <a href="#booking" class="nav-button">Забронировать</a>
-
         <div class="mobile-menu">
             <i class='bx bx-menu'></i>
         </div>
@@ -45,30 +42,18 @@
 
 <section class="hero">
     <div class="hero-bg"></div>
-
     <div class="hero-content container">
         <p class="hero-small">Ресторан современной кухни</p>
         <h1>Смак</h1>
         <h2>Место, где рождаются<br>важные моменты</h2>
-
         <div class="hero-buttons">
             <a href="#booking" class="button">Забронировать стол</a>
             <a href="#menu" class="button-outline">Смотреть меню</a>
         </div>
-
         <div class="hero-info">
-            <div>
-                <i class='bx bx-map'></i>
-                <p>Бугуруслан</p>
-            </div>
-            <div>
-                <i class='bx bx-star'></i>
-                <p>4.3 рейтинг</p>
-            </div>
-            <div>
-                <i class='bx bx-time-five'></i>
-                <p>до 02:00</p>
-            </div>
+            <div><i class='bx bx-map'></i><p>Бугуруслан</p></div>
+            <div><i class='bx bx-star'></i><p>4.3 рейтинг</p></div>
+            <div><i class='bx bx-time-five'></i><p>до 02:00</p></div>
         </div>
     </div>
 </section>
@@ -79,20 +64,17 @@
             <span>01</span>
             <h2>О ресторане</h2>
         </div>
-
         <div class="about-grid">
             <div class="about-text">
                 <h3>Атмосфера, которую хочется запомнить</h3>
                 <p>СМАК — это ресторан для семейных встреч, праздников и особенных событий.</p>
                 <p>Несколько залов, уютный интерьер, вкусная кухня и возможность провести банкет любого формата.</p>
-
                 <div class="about-items">
                     <div><i class='bx bx-check'></i> Несколько залов</div>
                     <div><i class='bx bx-check'></i> Банкеты</div>
                     <div><i class='bx bx-check'></i> Летняя веранда</div>
                 </div>
             </div>
-
             <div class="about-image">
                 <img src="hol11.jpg" alt="Ресторан Смак">
             </div>
@@ -107,19 +89,16 @@
             <h3>Кухня</h3>
             <p>Большие порции и любимые блюда</p>
         </div>
-
         <div class="feature-card">
             <i class='bx bx-party'></i>
             <h3>Банкеты</h3>
             <p>Свадьбы и мероприятия</p>
         </div>
-
         <div class="feature-card">
             <i class='bx bx-leaf'></i>
             <h3>Веранда</h3>
             <p>Летний отдых на свежем воздухе</p>
         </div>
-
         <div class="feature-card">
             <i class='bx bx-music'></i>
             <h3>Музыка</h3>
@@ -128,49 +107,39 @@
     </div>
 </section>
 
-<!-- =====================
-ПОПУЛЯРНОЕ МЕНЮ (БЕЗ КАРТИНОК)
-===================== -->
-
+<!-- ===================== ПОПУЛЯРНОЕ МЕНЮ ===================== -->
 <section class="popular-menu section" id="menu">
     <div class="container">
         <div class="section-title">
             <span>02</span>
             <h2>Популярное меню</h2>
         </div>
-
         <div class="popular-grid">
             <div class="dish">
                 <h3>Бутерброд</h3>
                 <p>С форелью / красной икрой</p>
             </div>
-
             <div class="dish">
                 <h3>Салат цезарь</h3>
                 <p>С курицей</p>
             </div>
-
             <div class="dish">
-                <h3>Пельмени</h3>
-                <p>Смаковские</p>
+                <h3>Пельмени Смаковские</h3>
+                <p>Домашние пельмени ручной лепки</p>
             </div>
-
             <div class="dish">
                 <h3>Стейк свиной</h3>
-                <p>На гриле</p>
+                <p>На гриле с овощами</p>
             </div>
-
             <div class="dish">
                 <h3>Стейк семги</h3>
-                <p>С овощами</p>
+                <p>С овощами и лимоном</p>
             </div>
-
             <div class="dish">
                 <h3>Ассорти на углях</h3>
                 <p>Из разных видов мяса</p>
             </div>
         </div>
-
         <div class="menu-button-wrapper">
             <a href="menu.html" class="button">Смотреть полное меню</a>
         </div>
@@ -191,7 +160,6 @@
             <span>03</span>
             <h2>Галерея</h2>
         </div>
-
         <div class="gallery-grid">
             <img src="1.jpg" alt="Интерьер ресторана">
             <img src="1.jpg" alt="Блюдо ресторана">
@@ -201,16 +169,21 @@
     </div>
 </section>
 
+<!-- ===================== ФОРМА БРОНИРОВАНИЯ ===================== -->
 <section class="booking section" id="booking">
     <div class="container">
         <div class="booking-box">
             <h2>Забронировать стол</h2>
 
-            <form id="bookingForm">
-                <input type="text" placeholder="Ваше имя" required>
-                <input type="tel" placeholder="Телефон" required>
-                <input type="date" required>
-                <select required>
+            <form action="https://formsubmit.co/hanrilife@gmail.com" method="POST">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="https://hanrilife-lgtm.github.io/Smak/">
+                <input type="hidden" name="_subject" value="Новая заявка с сайта СМАК">
+
+                <input type="text" name="Имя" placeholder="Ваше имя" required>
+                <input type="tel" name="Телефон" placeholder="Телефон" required>
+                <input type="date" name="Дата" required>
+                <select name="Гости" required>
                     <option value="">Количество гостей</option>
                     <option value="2">2 человека</option>
                     <option value="5">5 человек</option>
@@ -228,11 +201,9 @@
             <span>04</span>
             <h2>Контакты</h2>
         </div>
-
         <div class="contact-grid-full">
             <div class="contact-info-full">
                 <h3>Приходите в гости</h3>
-
                 <div class="contact-item-full">
                     <i class='bx bx-map'></i>
                     <div>
@@ -240,7 +211,6 @@
                         <p>Революционная ул., 3, Бугуруслан</p>
                     </div>
                 </div>
-
                 <div class="contact-item-full">
                     <i class='bx bx-phone'></i>
                     <div>
@@ -249,7 +219,6 @@
                         <a href="tel:89068407555" style="display:block;">8 (906) 840-75-55</a>
                     </div>
                 </div>
-
                 <div class="contact-item-full">
                     <i class='bx bx-time-five'></i>
                     <div>
@@ -257,7 +226,6 @@
                         <p>Ежедневно до 02:00</p>
                     </div>
                 </div>
-
                 <div class="social-buttons-full">
                     <a href="#" class="social-full">
                         <i class='bx bxl-whatsapp'></i>
@@ -269,12 +237,8 @@
                     </a>
                 </div>
             </div>
-
             <div class="map-box-full">
-                <iframe
-                    src="https://yandex.ru/map-widget/v1/?ll=52.434909%2C53.648707&z=17&l=map&pt=52.434909%2C53.648707%2Cflag"
-                    allowfullscreen="true">
-                </iframe>
+                <iframe src="https://yandex.ru/map-widget/v1/?ll=52.434909%2C53.648707&z=17&l=map&pt=52.434909%2C53.648707%2Cflag" allowfullscreen="true"></iframe>
             </div>
         </div>
     </div>
