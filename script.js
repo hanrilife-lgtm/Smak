@@ -110,7 +110,7 @@ if (bookingForm) {
         var guests = formData.get("Гости") || "Не указано";
 
         // === ВАШ URL ИЗ GOOGLE APPS SCRIPT ===
-        var url = "https://script.google.com/macros/s/AKfycbz00VZuQaRq1akKUwNLQl9EFUWF_Eyw7wubWqwBIWWRF3TEvDLXC78_xD39ts8jfCel/exec";
+        var url = "https://script.google.com/macros/s/AKfycbz00VZuQaRq1akKUwNLQI9EFUWF_Eyw7wubWqwBIWWRF3TEvDLXC78_xD39ts8jfCeI/exec";
 
         var button = this.querySelector("button");
         var originalText = button.innerHTML;
