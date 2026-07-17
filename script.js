@@ -110,7 +110,7 @@ if (bookingForm) {
         var guests = formData.get("Гости") || "Не указано";
 
         // === ВАШ URL ИЗ GOOGLE APPS SCRIPT ===
-        var url = "https://script.google.com/macros/s/AKfycbz00VZuQaRq1akKUwNLQI9EFUWF_Eyw7wubWqwBIWWRF3TEvDLXC78_xD39ts8jfCeI/exec";
+        var url = "https://script.google.com/macros/s/AKfycbz00VZuQaRq1akKUwNLQl9EFUWF_Eyw7wubWqwBIWWRF3TEvDLXC78_xD39ts8jfCel/exec";
 
         var button = this.querySelector("button");
         var originalText = button.innerHTML;
@@ -119,9 +119,9 @@ if (bookingForm) {
         button.style.opacity = "0.7";
         button.disabled = true;
 
+        // === ОТПРАВЛЯЕМ POST-ЗАПРОС ===
         fetch(url, {
             method: "POST",
-            mode: "no-cors",
             headers: {
                 "Content-Type": "application/json"
             },
@@ -132,22 +132,41 @@ if (bookingForm) {
                 guests: guests
             })
         })
-        .then(function() {
-            button.innerHTML = "✅ Заявка отправлена!";
-            button.style.background = "#1f8f4d";
-            button.style.color = "#fff";
-            button.style.opacity = "1";
-            button.disabled = false;
-
-            setTimeout(function() {
-                button.innerHTML = originalText;
-                button.style.background = "";
-                button.style.color = "";
-                button.style.opacity = "1";
-                bookingForm.reset();
-            }, 3000);
+        .then(function(response) {
+            return response.json();
         })
-        .catch(function() {
+        .then(function(data) {
+            if (data.success) {
+                button.innerHTML = "✅ Заявка отправлена!";
+                button.style.background = "#1f8f4d";
+                button.style.color = "#fff";
+                button.style.opacity = "1";
+                button.disabled = false;
+
+                setTimeout(function() {
+                    button.innerHTML = originalText;
+                    button.style.background = "";
+                    button.style.color = "";
+                    button.style.opacity = "1";
+                    bookingForm.reset();
+                }, 3000);
+            } else {
+                button.innerHTML = "❌ Ошибка: " + data.message;
+                button.style.background = "#d32f2f";
+                button.style.color = "#fff";
+                button.style.opacity = "1";
+                button.disabled = false;
+
+                setTimeout(function() {
+                    button.innerHTML = originalText;
+                    button.style.background = "";
+                    button.style.color = "";
+                    button.style.opacity = "1";
+                }, 3000);
+            }
+        })
+        .catch(function(error) {
+            console.error("Ошибка:", error);
             button.innerHTML = "❌ Ошибка соединения";
             button.style.background = "#d32f2f";
             button.style.color = "#fff";
@@ -163,5 +182,3 @@ if (bookingForm) {
         });
     });
 }
-
-console.log("СМАК сайт загружен");
