@@ -66,27 +66,33 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 // ================================
-// АККОРДЕОН МЕНЮ
+// АККОРДЕОН МЕНЮ (БЕЗ ПРОКРУТКИ)
 // ================================
 
 document.addEventListener("DOMContentLoaded", function() {
     var headers = document.querySelectorAll(".menu-category-header");
 
     headers.forEach(function(header) {
-        header.addEventListener("click", function() {
+        header.addEventListener("click", function(e) {
             var category = this.parentElement;
             var isActive = category.classList.contains("active");
 
+            // Закрываем все категории
             document.querySelectorAll(".menu-category").forEach(function(cat) {
                 cat.classList.remove("active");
             });
 
+            // Открываем текущую, если она была закрыта
             if (!isActive) {
                 category.classList.add("active");
             }
+
+            // Отменяем любое стандартное поведение (на всякий случай)
+            e.preventDefault();
         });
     });
 
+    // По умолчанию открыта первая категория
     var firstCategory = document.querySelector(".menu-category");
     if (firstCategory) {
         firstCategory.classList.add("active");
@@ -163,5 +169,29 @@ if (bookingForm) {
         });
     });
 }
+
+// ================================
+// ИНИЦИАЛИЗАЦИЯ СЛАЙДЕРА
+// ================================
+
+document.addEventListener("DOMContentLoaded", function() {
+    var swiper = new Swiper('.gallerySwiper', {
+        loop: true,
+        autoplay: {
+            delay: 4000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        effect: 'slide',
+        speed: 800,
+    });
+});
 
 console.log("СМАК сайт загружен");
