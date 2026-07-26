@@ -710,7 +710,7 @@ FEATURES
 }
 
 /* =========================
-ПОПУЛЯРНОЕ МЕНЮ (СЕТКА С КАРТИНКАМИ)
+ПОПУЛЯРНОЕ МЕНЮ (ДЕСКТОП)
 ========================= */
 
 .popular-grid {
@@ -790,87 +790,91 @@ FEATURES
     margin: 0;
 }
 
-/* Адаптив */
+/* =========================
+ПОПУЛЯРНОЕ МЕНЮ — ПЛАНШЕТЫ И ТЕЛЕФОНЫ
+========================= */
+
 @media (max-width: 992px) {
     .popular-grid {
         grid-template-columns: 1fr 1fr;
-        grid-auto-rows: 220px;
+        grid-auto-rows: auto;
+        gap: 16px;
     }
+
     .popular-item--large {
         grid-row: span 1;
         grid-column: span 2;
+    }
+
+    .popular-item {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        border-radius: 14px;
+        overflow: hidden;
+        background: #111;
+    }
+
+    .popular-item img {
+        height: 200px;
+        width: 100%;
+        object-fit: cover;
+        transition: none; /* убираем анимацию на тач-устройствах */
+    }
+
+    .popular-item:hover img {
+        transform: none;
+    }
+
+    .popular-overlay {
+        position: static;
+        opacity: 1 !important;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 16px 20px;
+        height: auto;
+        transition: none;
+        transform: none;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    .popular-overlay h4 {
+        font-size: 20px;
+        color: #fff;
+        margin-bottom: 4px;
+    }
+
+    .popular-overlay p {
+        font-size: 14px;
+        color: #ccc;
+    }
+
+    .popular-label {
+        margin-bottom: 6px;
+        font-size: 10px;
     }
 }
 
 @media (max-width: 600px) {
     .popular-grid {
         grid-template-columns: 1fr;
-        grid-auto-rows: 200px;
+        gap: 16px;
     }
+
     .popular-item--large {
         grid-column: span 1;
     }
+
+    .popular-item img {
+        height: 180px;
+    }
+
     .popular-overlay h4 {
         font-size: 18px;
     }
-}
 
-/* =========================
-BANQUET
-========================= */
-
-.banquet {
-    padding: 150px 0;
-    text-align: center;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url("assets/img/banquet.jpg");
-    background-size: cover;
-    background-position: center;
-}
-
-.banquet h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 80px;
-}
-
-.banquet p {
-    margin: 30px auto;
-    max-width: 600px;
-    color: #ddd;
-    font-size: 18px;
-}
-
-.banquet .button {
-    margin-top: 20px;
-}
-
-@media (max-width: 768px) {
-    .banquet {
-        padding: 100px 0;
-    }
-
-    .banquet h2 {
-        font-size: 50px;
-    }
-
-    .banquet p {
-        font-size: 16px;
-        margin: 20px auto;
-        padding: 0 20px;
-    }
-}
-
-@media (max-width: 480px) {
-    .banquet {
-        padding: 70px 0;
-    }
-
-    .banquet h2 {
-        font-size: 34px;
-    }
-
-    .banquet p {
-        font-size: 14px;
-        margin: 15px auto;
+    .popular-overlay p {
+        font-size: 13px;
     }
 }
 
