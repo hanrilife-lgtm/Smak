@@ -107,39 +107,72 @@
     </div>
 </section>
 
-<!-- ===================== ПОПУЛЯРНОЕ МЕНЮ ===================== -->
+<!-- ===================== ПОПУЛЯРНОЕ МЕНЮ (СЕТКА С КАРТИНКАМИ) ===================== -->
 <section class="popular-menu section" id="menu">
     <div class="container">
         <div class="section-title">
             <span>02</span>
             <h2>Популярное меню</h2>
+            <p class="section-subtitle">Блюда, которые выбирают чаще всего</p>
         </div>
+
         <div class="popular-grid">
-            <div class="dish">
-                <h3>Бутерброд</h3>
-                <p>С форелью / красной икрой</p>
+            <!-- 1 -->
+            <div class="popular-item popular-item--large">
+                <img src="7.jpg" alt="Бутерброд">
+                <div class="popular-overlay">
+                    <span class="popular-label">Хит</span>
+                    <h4>Бутерброд</h4>
+                    <p>С форелью / красной икрой</p>
+                </div>
             </div>
-            <div class="dish">
-                <h3>Салат цезарь</h3>
-                <p>С курицей</p>
+            <!-- 2 -->
+            <div class="popular-item">
+                <img src="6.jpg" alt="Салат цезарь">
+                <div class="popular-overlay">
+                    <span class="popular-label">Классика</span>
+                    <h4>Салат цезарь</h4>
+                    <p>С курицей</p>
+                </div>
             </div>
-            <div class="dish">
-                <h3>Пельмени Смаковские</h3>
-                <p>Домашние пельмени ручной лепки</p>
+            <!-- 3 -->
+            <div class="popular-item">
+                <img src="5.jpg" alt="Пельмени">
+                <div class="popular-overlay">
+                    <span class="popular-label">Фирменное</span>
+                    <h4>Пельмени Смаковские</h4>
+                    <p>Домашние, ручной лепки</p>
+                </div>
             </div>
-            <div class="dish">
-                <h3>Стейк свиной</h3>
-                <p>На гриле с овощами</p>
+            <!-- 4 -->
+            <div class="popular-item">
+                <img src="9.jpg" alt="Стейк свиной">
+                <div class="popular-overlay">
+                    <span class="popular-label">Горячее</span>
+                    <h4>Стейк свиной</h4>
+                    <p>На гриле с овощами</p>
+                </div>
             </div>
-            <div class="dish">
-                <h3>Стейк семги</h3>
-                <p>С овощами и лимоном</p>
+            <!-- 5 -->
+            <div class="popular-item">
+                <img src="8.jpg" alt="Стейк семги">
+                <div class="popular-overlay">
+                    <span class="popular-label">Рыба</span>
+                    <h4>Стейк семги</h4>
+                    <p>С овощами и лимоном</p>
+                </div>
             </div>
-            <div class="dish">
-                <h3>Ассорти на углях</h3>
-                <p>Из разных видов мяса</p>
+            <!-- 6 -->
+            <div class="popular-item">
+                <img src="10.jpg" alt="Ассорти на углях">
+                <div class="popular-overlay">
+                    <span class="popular-label">Мангал</span>
+                    <h4>Ассорти на углях</h4>
+                    <p>Из разных видов мяса</p>
+                </div>
             </div>
         </div>
+
         <div class="menu-button-wrapper">
             <a href="menu.html" class="button">Смотреть полное меню</a>
         </div>
@@ -154,17 +187,29 @@
     </div>
 </section>
 
+<!-- ===================== ГАЛЕРЕЯ / СЛАЙДЕР ===================== -->
 <section class="gallery section" id="gallery">
     <div class="container">
         <div class="section-title">
             <span>03</span>
             <h2>Галерея</h2>
         </div>
-        <div class="gallery-grid">
-            <img src="1.jpg" alt="Интерьер ресторана">
-            <img src="1.jpg" alt="Блюдо ресторана">
-            <img src="1.jpg" alt="Зал ресторана">
-            <img src="1.jpg" alt="Атмосфера ресторана">
+
+        <div class="swiper gallerySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="1.jpg" alt="Интерьер ресторана">
+                </div>
+                <div class="swiper-slide">
+                    <img src="2.jpg" alt="Зал ресторана">
+                </div>
+                <div class="swiper-slide">
+                    <img src="3.jpg" alt="Блюдо ресторана">
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
     </div>
 </section>
@@ -248,6 +293,10 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
 <script src="script.js"></script>
 
 </body>
