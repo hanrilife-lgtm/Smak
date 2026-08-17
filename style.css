@@ -710,33 +710,36 @@ FEATURES
 }
 
 /* =========================
-ПОПУЛЯРНОЕ МЕНЮ (ДЕСКТОП)
+ПОПУЛЯРНОЕ МЕНЮ (СЛАЙДЕР)
 ========================= */
 
-.popular-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    grid-auto-rows: 260px;
-    gap: 16px;
-    margin-top: 40px;
+.popularSwiper {
+    width: 100%;
+    padding: 20px 0 50px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.popularSwiper .swiper-slide {
+    width: 280px;
+    height: auto;
 }
 
 .popular-item {
     position: relative;
+    border-radius: 16px;
     overflow: hidden;
-    border-radius: 14px;
-    cursor: default;
-}
-
-.popular-item--large {
-    grid-row: span 2;
+    background: #111;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .popular-item img {
     width: 100%;
-    height: 100%;
+    height: 320px;
     object-fit: cover;
-    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .popular-item:hover img {
@@ -749,17 +752,11 @@ FEATURES
     left: 0;
     right: 0;
     padding: 30px 24px 20px;
-    background: linear-gradient(0deg, rgba(0,0,0,0.75) 0%, transparent 100%);
-    opacity: 0;
-    transition: opacity 0.4s ease;
+    background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, transparent 100%);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-end;
-}
-
-.popular-item:hover .popular-overlay {
-    opacity: 1;
 }
 
 .popular-label {
@@ -790,83 +787,78 @@ FEATURES
     margin: 0;
 }
 
-/* =========================
-ПОПУЛЯРНОЕ МЕНЮ — ПЛАНШЕТЫ И ТЕЛЕФОНЫ
-========================= */
+/* Пагинация */
+.popularSwiper .swiper-pagination {
+    position: relative;
+    margin-top: 20px;
+}
 
+.popularSwiper .swiper-pagination-bullet {
+    background: var(--gold);
+    opacity: 0.4;
+    width: 10px;
+    height: 10px;
+    transition: 0.3s;
+}
+
+.popularSwiper .swiper-pagination-bullet-active {
+    opacity: 1;
+    width: 30px;
+    border-radius: 5px;
+}
+
+/* Стрелки */
+.popularSwiper .swiper-button-next,
+.popularSwiper .swiper-button-prev {
+    color: var(--gold);
+    background: rgba(0, 0, 0, 0.4);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    transition: 0.3s;
+    backdrop-filter: blur(5px);
+}
+
+.popularSwiper .swiper-button-next:hover,
+.popularSwiper .swiper-button-prev:hover {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.popularSwiper .swiper-button-next::after,
+.popularSwiper .swiper-button-prev::after {
+    font-size: 18px;
+}
+
+/* Адаптив слайдера */
 @media (max-width: 992px) {
-    .popular-grid {
-        grid-template-columns: 1fr 1fr;
-        grid-auto-rows: auto;
-        gap: 16px;
-    }
-
-    .popular-item--large {
-        grid-row: span 1;
-        grid-column: span 2;
-    }
-
-    .popular-item {
-        display: flex;
-        flex-direction: column;
-        height: auto;
-        border-radius: 14px;
-        overflow: hidden;
-        background: #111;
+    .popularSwiper .swiper-slide {
+        width: 260px;
     }
 
     .popular-item img {
-        height: 200px;
-        width: 100%;
-        object-fit: cover;
-        transition: none; /* убираем анимацию на тач-устройствах */
-    }
-
-    .popular-item:hover img {
-        transform: none;
-    }
-
-    .popular-overlay {
-        position: static;
-        opacity: 1 !important;
-        background: rgba(0, 0, 0, 0.7);
-        padding: 16px 20px;
-        height: auto;
-        transition: none;
-        transform: none;
-        align-items: flex-start;
-        justify-content: center;
+        height: 280px;
     }
 
     .popular-overlay h4 {
         font-size: 20px;
-        color: #fff;
-        margin-bottom: 4px;
     }
 
     .popular-overlay p {
-        font-size: 14px;
-        color: #ccc;
-    }
-
-    .popular-label {
-        margin-bottom: 6px;
-        font-size: 10px;
+        font-size: 13px;
     }
 }
 
 @media (max-width: 600px) {
-    .popular-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-
-    .popular-item--large {
-        grid-column: span 1;
+    .popularSwiper .swiper-slide {
+        width: 220px;
     }
 
     .popular-item img {
-        height: 180px;
+        height: 220px;
+    }
+
+    .popular-overlay {
+        padding: 20px 18px 16px;
     }
 
     .popular-overlay h4 {
@@ -874,7 +866,103 @@ FEATURES
     }
 
     .popular-overlay p {
-        font-size: 13px;
+        font-size: 12px;
+    }
+
+    .popularSwiper .swiper-button-next,
+    .popularSwiper .swiper-button-prev {
+        display: none;
+    }
+
+    .popularSwiper .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+    }
+
+    .popularSwiper .swiper-pagination-bullet-active {
+        width: 24px;
+    }
+}
+
+@media (max-width: 420px) {
+    .popularSwiper .swiper-slide {
+        width: 180px;
+    }
+
+    .popular-item img {
+        height: 180px;
+    }
+
+    .popular-overlay h4 {
+        font-size: 16px;
+    }
+
+    .popular-overlay p {
+        font-size: 11px;
+    }
+
+    .popular-label {
+        font-size: 9px;
+        padding: 2px 12px;
+    }
+}
+
+/* =========================
+BANQUET
+========================= */
+
+.banquet {
+    padding: 150px 0;
+    text-align: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url("assets/img/banquet.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.banquet h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 80px;
+}
+
+.banquet p {
+    margin: 30px auto;
+    max-width: 600px;
+    color: #ddd;
+    font-size: 18px;
+}
+
+.banquet .button {
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .banquet {
+        padding: 100px 0;
+    }
+
+    .banquet h2 {
+        font-size: 50px;
+    }
+
+    .banquet p {
+        font-size: 16px;
+        margin: 20px auto;
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .banquet {
+        padding: 70px 0;
+    }
+
+    .banquet h2 {
+        font-size: 34px;
+    }
+
+    .banquet p {
+        font-size: 14px;
+        margin: 15px auto;
     }
 }
 
