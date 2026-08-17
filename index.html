@@ -107,7 +107,7 @@
     </div>
 </section>
 
-<!-- ===================== ПОПУЛЯРНОЕ МЕНЮ (СЕТКА С КАРТИНКАМИ) ===================== -->
+<!-- ===================== ПОПУЛЯРНОЕ МЕНЮ (СЛАЙДЕР) ===================== -->
 <section class="popular-menu section" id="menu">
     <div class="container">
         <div class="section-title">
@@ -116,61 +116,82 @@
             <p class="section-subtitle">Блюда, которые выбирают чаще всего</p>
         </div>
 
-        <div class="popular-grid">
-            <!-- 1 -->
-            <div class="popular-item popular-item--large">
-                <img src="7.jpg" alt="Бутерброд">
-                <div class="popular-overlay">
-                    <span class="popular-label">Хит</span>
-                    <h4>Бутерброд</h4>
-                    <p>С форелью / красной икрой</p>
+        <div class="swiper popularSwiper">
+            <div class="swiper-wrapper">
+                <!-- Слайд 1 -->
+                <div class="swiper-slide">
+                    <div class="popular-item">
+                        <img src="7.jpg" alt="Бутерброд">
+                        <div class="popular-overlay">
+                            <span class="popular-label">Хит</span>
+                            <h4>Бутерброд</h4>
+                            <p>С форелью / красной икрой</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Слайд 2 -->
+                <div class="swiper-slide">
+                    <div class="popular-item">
+                        <img src="6.jpg" alt="Салат цезарь">
+                        <div class="popular-overlay">
+                            <span class="popular-label">Классика</span>
+                            <h4>Салат цезарь</h4>
+                            <p>С курицей</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Слайд 3 -->
+                <div class="swiper-slide">
+                    <div class="popular-item">
+                        <img src="5.jpg" alt="Пельмени">
+                        <div class="popular-overlay">
+                            <span class="popular-label">Фирменное</span>
+                            <h4>Пельмени Смаковские</h4>
+                            <p>Домашние, ручной лепки</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Слайд 4 -->
+                <div class="swiper-slide">
+                    <div class="popular-item">
+                        <img src="9.jpg" alt="Стейк свиной">
+                        <div class="popular-overlay">
+                            <span class="popular-label">Горячее</span>
+                            <h4>Стейк свиной</h4>
+                            <p>На гриле с овощами</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Слайд 5 -->
+                <div class="swiper-slide">
+                    <div class="popular-item">
+                        <img src="8.jpg" alt="Стейк семги">
+                        <div class="popular-overlay">
+                            <span class="popular-label">Рыба</span>
+                            <h4>Стейк семги</h4>
+                            <p>С овощами и лимоном</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Слайд 6 -->
+                <div class="swiper-slide">
+                    <div class="popular-item">
+                        <img src="10.jpg" alt="Ассорти на углях">
+                        <div class="popular-overlay">
+                            <span class="popular-label">Мангал</span>
+                            <h4>Ассорти на углях</h4>
+                            <p>Из разных видов мяса</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <!-- 2 -->
-            <div class="popular-item">
-                <img src="6.jpg" alt="Салат цезарь">
-                <div class="popular-overlay">
-                    <span class="popular-label">Классика</span>
-                    <h4>Салат цезарь</h4>
-                    <p>С курицей</p>
-                </div>
-            </div>
-            <!-- 3 -->
-            <div class="popular-item">
-                <img src="5.jpg" alt="Пельмени">
-                <div class="popular-overlay">
-                    <span class="popular-label">Фирменное</span>
-                    <h4>Пельмени Смаковские</h4>
-                    <p>Домашние, ручной лепки</p>
-                </div>
-            </div>
-            <!-- 4 -->
-            <div class="popular-item">
-                <img src="9.jpg" alt="Стейк свиной">
-                <div class="popular-overlay">
-                    <span class="popular-label">Горячее</span>
-                    <h4>Стейк свиной</h4>
-                    <p>На гриле с овощами</p>
-                </div>
-            </div>
-            <!-- 5 -->
-            <div class="popular-item">
-                <img src="8.jpg" alt="Стейк семги">
-                <div class="popular-overlay">
-                    <span class="popular-label">Рыба</span>
-                    <h4>Стейк семги</h4>
-                    <p>С овощами и лимоном</p>
-                </div>
-            </div>
-            <!-- 6 -->
-            <div class="popular-item">
-                <img src="10.jpg" alt="Ассорти на углях">
-                <div class="popular-overlay">
-                    <span class="popular-label">Мангал</span>
-                    <h4>Ассорти на углях</h4>
-                    <p>Из разных видов мяса</p>
-                </div>
-            </div>
+
+            <!-- Пагинация (точки) -->
+            <div class="swiper-pagination"></div>
+
+            <!-- Навигация (стрелки) -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
 
         <div class="menu-button-wrapper">
