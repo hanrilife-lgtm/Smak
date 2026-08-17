@@ -1,12 +1,3 @@
-/* =================================
-   SMAK RESTAURANT
-   PREMIUM JAVASCRIPT
-================================= */
-
-// ================================
-// LOADER
-// ================================
-
 window.addEventListener("load", function() {
     var loader = document.querySelector(".loader");
     if (loader) {
@@ -66,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 // ================================
-// АККОРДЕОН МЕНЮ (БЕЗ ПРОКРУТКИ)
+// АККОРДЕОН МЕНЮ
 // ================================
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -77,22 +68,18 @@ document.addEventListener("DOMContentLoaded", function() {
             var category = this.parentElement;
             var isActive = category.classList.contains("active");
 
-            // Закрываем все категории
             document.querySelectorAll(".menu-category").forEach(function(cat) {
                 cat.classList.remove("active");
             });
 
-            // Открываем текущую, если она была закрыта
             if (!isActive) {
                 category.classList.add("active");
             }
 
-            // Отменяем любое стандартное поведение (на всякий случай)
             e.preventDefault();
         });
     });
 
-    // По умолчанию открыта первая категория
     var firstCategory = document.querySelector(".menu-category");
     if (firstCategory) {
         firstCategory.classList.add("active");
@@ -116,7 +103,7 @@ if (bookingForm) {
         var guests = formData.get("Гости") || "Не указано";
 
         // === ВАШ URL ИЗ GOOGLE APPS SCRIPT ===
-        var url = "https://script.google.com/macros/s/AKfycbzkxsf5Eiud42lWbPLcUpp998a5yjapdCY027paPwFRo5bhXWPQtoVBHio-1cwZbgTi/exec";
+        var url = "https://script.google.com/macros/s/AKfycby6u9t-NkTd-AxniVDyWtg1hhutcXzM2TxHz85EBX8BMWiANOfwdMlm0wLtHozud77i/exec";
 
         var button = this.querySelector("button");
         var originalText = button.innerHTML;
@@ -171,11 +158,11 @@ if (bookingForm) {
 }
 
 // ================================
-// ИНИЦИАЛИЗАЦИЯ СЛАЙДЕРА
+// ИНИЦИАЛИЗАЦИЯ СЛАЙДЕРА ГАЛЕРЕИ
 // ================================
 
 document.addEventListener("DOMContentLoaded", function() {
-    var swiper = new Swiper('.gallerySwiper', {
+    var gallerySwiper = new Swiper('.gallerySwiper', {
         loop: true,
         autoplay: {
             delay: 4000,
@@ -190,6 +177,50 @@ document.addEventListener("DOMContentLoaded", function() {
             prevEl: '.swiper-button-prev',
         },
         effect: 'slide',
+        speed: 800,
+    });
+});
+
+// ================================
+// ИНИЦИАЛИЗАЦИЯ СЛАЙДЕРА ПОПУЛЯРНОГО МЕНЮ
+// ================================
+
+document.addEventListener("DOMContentLoaded", function() {
+    var popularSwiper = new Swiper('.popularSwiper', {
+        loop: true,
+        autoplay: {
+            delay: 4000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        slidesPerView: 1.2,
+        spaceBetween: 16,
+        centeredSlides: false,
+        breakpoints: {
+            480: {
+                slidesPerView: 1.5,
+                spaceBetween: 16,
+            },
+            600: {
+                slidesPerView: 2.2,
+                spaceBetween: 20,
+            },
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 24,
+            },
+            1024: {
+                slidesPerView: 4,
+                spaceBetween: 30,
+            },
+        },
         speed: 800,
     });
 });
