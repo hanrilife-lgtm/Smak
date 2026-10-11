@@ -8,9 +8,15 @@
 <meta name="description" content="Ресторан Смак в Бугуруслане. Вкусная кухня, банкеты, свадьбы, летняя веранда и уютная атмосфера.">
 <meta name="keywords" content="ресторан Бугуруслан, банкет Бугуруслан, свадьба Бугуруслан, кафе Смак">
 <meta name="author" content="СМАК">
+<meta name="theme-color" content="#0b0b0b">
+
 <meta property="og:title" content="Ресторан СМАК">
 <meta property="og:description" content="Место для важных событий и красивых вечеров">
 <meta property="og:type" content="website">
+<meta property="og:image" content="logo.png">
+
+<link rel="icon" type="image/png" href="logo.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -19,41 +25,51 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="loader">
-    <div class="loader-logo">СМАК</div>
+
+<div class="loader" aria-hidden="true">
+    <div class="loader-logo">
+        <img src="logo.png" alt="СМАК">
+    </div>
 </div>
 
 <header class="header">
     <div class="container nav-container">
-        <a class="logo">СМАК</a>
-        <nav class="nav">
+        <a href="/" class="logo" aria-label="СМАК — на главную">
+            <img src="logo.png" alt="СМАК">
+        </a>
+
+        <nav class="nav" aria-label="Основная навигация">
             <a href="#about">О ресторане</a>
             <a href="#menu">Меню</a>
             <a href="#banquet">Банкеты</a>
             <a href="#gallery">Галерея</a>
             <a href="#contacts">Контакты</a>
         </nav>
+
         <a href="#booking" class="nav-button">Забронировать</a>
-        <div class="mobile-menu">
+
+        <button class="mobile-menu" aria-label="Открыть меню" aria-expanded="false">
             <i class='bx bx-menu'></i>
-        </div>
+        </button>
     </div>
 </header>
 
 <section class="hero">
-    <div class="hero-bg"></div>
+    <div class="hero-bg" aria-hidden="true"></div>
     <div class="hero-content container">
         <p class="hero-small">Ресторан современной кухни</p>
-        <h1>Смак</h1>
+        <img src="logo.png" alt="СМАК" class="hero-logo">
         <h2>Место, где рождаются<br>важные моменты</h2>
+
         <div class="hero-buttons">
             <a href="#booking" class="button">Забронировать стол</a>
             <a href="#menu" class="button-outline">Смотреть меню</a>
         </div>
+
         <div class="hero-info">
-            <div><i class='bx bx-map'></i><p>Бугуруслан</p></div>
-            <div><i class='bx bx-star'></i><p>4.3 рейтинг</p></div>
-            <div><i class='bx bx-time-five'></i><p>до 02:00</p></div>
+            <div><i class='bx bx-map' aria-hidden="true"></i><p>Бугуруслан</p></div>
+            <div><i class='bx bx-star' aria-hidden="true"></i><p>4.3 рейтинг</p></div>
+            <div><i class='bx bx-time-five' aria-hidden="true"></i><p>до 02:00</p></div>
         </div>
     </div>
 </section>
@@ -64,19 +80,22 @@
             <span>01</span>
             <h2>О ресторане</h2>
         </div>
+
         <div class="about-grid">
             <div class="about-text">
                 <h3>Атмосфера, которую хочется запомнить</h3>
                 <p>СМАК — это ресторан для семейных встреч, праздников и особенных событий.</p>
                 <p>Несколько залов, уютный интерьер, вкусная кухня и возможность провести банкет любого формата.</p>
+
                 <div class="about-items">
-                    <div><i class='bx bx-check'></i> Несколько залов</div>
-                    <div><i class='bx bx-check'></i> Банкеты</div>
-                    <div><i class='bx bx-check'></i> Летняя веранда</div>
+                    <div><i class='bx bx-check' aria-hidden="true"></i> Несколько залов</div>
+                    <div><i class='bx bx-check' aria-hidden="true"></i> Банкеты</div>
+                    <div><i class='bx bx-check' aria-hidden="true"></i> Летняя веранда</div>
                 </div>
             </div>
+
             <div class="about-image">
-                <img src="hol11.jpg" alt="Ресторан Смак">
+                <img src="hol11.jpg" alt="Ресторан Смак" loading="lazy">
             </div>
         </div>
     </div>
@@ -85,29 +104,31 @@
 <section class="features">
     <div class="container features-grid">
         <div class="feature-card">
-            <i class='bx bx-bowl-hot'></i>
+            <i class='bx bx-bowl-hot' aria-hidden="true"></i>
             <h3>Кухня</h3>
             <p>Большие порции и любимые блюда</p>
         </div>
+
         <div class="feature-card">
-            <i class='bx bx-party'></i>
+            <i class='bx bx-party' aria-hidden="true"></i>
             <h3>Банкеты</h3>
             <p>Свадьбы и мероприятия</p>
         </div>
+
         <div class="feature-card">
-            <i class='bx bx-leaf'></i>
+            <i class='bx bx-leaf' aria-hidden="true"></i>
             <h3>Веранда</h3>
             <p>Летний отдых на свежем воздухе</p>
         </div>
+
         <div class="feature-card">
-            <i class='bx bx-music'></i>
+            <i class='bx bx-music' aria-hidden="true"></i>
             <h3>Музыка</h3>
             <p>Атмосфера праздника</p>
         </div>
     </div>
 </section>
 
-<!-- ===================== ПОПУЛЯРНОЕ МЕНЮ (СЛАЙДЕР) ===================== -->
 <section class="popular-menu section" id="menu">
     <div class="container">
         <div class="section-title">
@@ -118,10 +139,9 @@
 
         <div class="swiper popularSwiper">
             <div class="swiper-wrapper">
-                <!-- Слайд 1 -->
                 <div class="swiper-slide">
                     <div class="popular-item">
-                        <img src="7.jpg" alt="Бутерброд">
+                        <img src="7.jpg" alt="Бутерброд с форелью и красной икрой" loading="lazy">
                         <div class="popular-overlay">
                             <span class="popular-label">Хит</span>
                             <h4>Бутерброд</h4>
@@ -129,10 +149,10 @@
                         </div>
                     </div>
                 </div>
-                <!-- Слайд 2 -->
+
                 <div class="swiper-slide">
                     <div class="popular-item">
-                        <img src="6.jpg" alt="Салат цезарь">
+                        <img src="6.jpg" alt="Салат цезарь с курицей" loading="lazy">
                         <div class="popular-overlay">
                             <span class="popular-label">Классика</span>
                             <h4>Салат цезарь</h4>
@@ -140,10 +160,10 @@
                         </div>
                     </div>
                 </div>
-                <!-- Слайд 3 -->
+
                 <div class="swiper-slide">
                     <div class="popular-item">
-                        <img src="5.jpg" alt="Пельмени">
+                        <img src="5.jpg" alt="Пельмени Смаковские" loading="lazy">
                         <div class="popular-overlay">
                             <span class="popular-label">Фирменное</span>
                             <h4>Пельмени Смаковские</h4>
@@ -151,10 +171,10 @@
                         </div>
                     </div>
                 </div>
-                <!-- Слайд 4 -->
+
                 <div class="swiper-slide">
                     <div class="popular-item">
-                        <img src="9.jpg" alt="Стейк свиной">
+                        <img src="9.jpg" alt="Стейк свиной на гриле" loading="lazy">
                         <div class="popular-overlay">
                             <span class="popular-label">Горячее</span>
                             <h4>Стейк свиной</h4>
@@ -162,10 +182,10 @@
                         </div>
                     </div>
                 </div>
-                <!-- Слайд 5 -->
+
                 <div class="swiper-slide">
                     <div class="popular-item">
-                        <img src="8.jpg" alt="Стейк семги">
+                        <img src="8.jpg" alt="Стейк семги с овощами" loading="lazy">
                         <div class="popular-overlay">
                             <span class="popular-label">Рыба</span>
                             <h4>Стейк семги</h4>
@@ -173,10 +193,10 @@
                         </div>
                     </div>
                 </div>
-                <!-- Слайд 6 -->
+
                 <div class="swiper-slide">
                     <div class="popular-item">
-                        <img src="10.jpg" alt="Ассорти на углях">
+                        <img src="10.jpg" alt="Ассорти на углях" loading="lazy">
                         <div class="popular-overlay">
                             <span class="popular-label">Мангал</span>
                             <h4>Ассорти на углях</h4>
@@ -186,12 +206,9 @@
                 </div>
             </div>
 
-            <!-- Пагинация (точки) -->
             <div class="swiper-pagination"></div>
-
-            <!-- Навигация (стрелки) -->
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next" aria-label="Следующий слайд"></div>
+            <div class="swiper-button-prev" aria-label="Предыдущий слайд"></div>
         </div>
 
         <div class="menu-button-wrapper">
@@ -208,7 +225,6 @@
     </div>
 </section>
 
-<!-- ===================== ГАЛЕРЕЯ / СЛАЙДЕР ===================== -->
 <section class="gallery section" id="gallery">
     <div class="container">
         <div class="section-title">
@@ -219,38 +235,60 @@
         <div class="swiper gallerySwiper">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    <img src="1.jpg" alt="Интерьер ресторана">
+                    <img src="1.jpg" alt="Интерьер ресторана" loading="lazy">
                 </div>
                 <div class="swiper-slide">
-                    <img src="2.jpg" alt="Зал ресторана">
+                    <img src="2.jpg" alt="Зал ресторана" loading="lazy">
                 </div>
                 <div class="swiper-slide">
-                    <img src="3.jpg" alt="Блюдо ресторана">
+                    <img src="3.jpg" alt="Блюдо ресторана" loading="lazy">
                 </div>
             </div>
             <div class="swiper-pagination"></div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next" aria-label="Следующий слайд"></div>
+            <div class="swiper-button-prev" aria-label="Предыдущий слайд"></div>
         </div>
     </div>
 </section>
 
-<!-- ===================== ФОРМА БРОНИРОВАНИЯ ===================== -->
 <section class="booking section" id="booking">
     <div class="container">
         <div class="booking-box">
             <h2>Забронировать стол</h2>
 
-            <form id="bookingForm">
-                <input type="text" name="Имя" placeholder="Ваше имя" required>
-                <input type="tel" name="Телефон" placeholder="Телефон" required>
+            <form id="bookingForm" novalidate>
+                <!-- Honeypot для защиты от спама -->
+                <input type="text" name="_company" tabindex="-1" autocomplete="off" class="hidden-field">
+
+                <input type="text" name="Имя" placeholder="Ваше имя" required minlength="2" maxlength="50">
+                <input type="tel" name="Телефон" placeholder="Телефон" required pattern="[0-9+\s\-()]{10,20}">
                 <input type="date" name="Дата" required>
-                <select name="Гости" required>
-                    <option value="">Количество гостей</option>
+
+                <input 
+                    type="text" 
+                    name="Гости" 
+                    list="guestsList" 
+                    placeholder="Количество гостей" 
+                    required
+                    inputmode="numeric"
+                    autocomplete="off"
+                >
+                <datalist id="guestsList">
+                    <option value="1">1 человек</option>
                     <option value="2">2 человека</option>
+                    <option value="3">3 человека</option>
+                    <option value="4">4 человека</option>
                     <option value="5">5 человек</option>
-                    <option value="10">10+ человек</option>
-                </select>
+                    <option value="6">6 человек</option>
+                    <option value="8">8 человек</option>
+                    <option value="10">10 человек</option>
+                    <option value="15">15 человек</option>
+                    <option value="20">20 человек</option>
+                    <option value="30">30 человек</option>
+                    <option value="50">50 человек</option>
+                    <option value="100">100 человек</option>
+                </datalist>
+
                 <button type="submit" class="button">Отправить заявку</button>
             </form>
         </div>
@@ -263,44 +301,55 @@
             <span>04</span>
             <h2>Контакты</h2>
         </div>
+
         <div class="contact-grid-full">
             <div class="contact-info-full">
                 <h3>Приходите в гости</h3>
+
                 <div class="contact-item-full">
-                    <i class='bx bx-map'></i>
+                    <i class='bx bx-map' aria-hidden="true"></i>
                     <div>
                         <h4>Адрес</h4>
                         <p>Революционная ул., 3, Бугуруслан</p>
                     </div>
                 </div>
+
                 <div class="contact-item-full">
-                    <i class='bx bx-phone'></i>
+                    <i class='bx bx-phone' aria-hidden="true"></i>
                     <div>
                         <h4>Телефон</h4>
-                        <a href="tel:89228180102" style="display:block;">8 (922) 818-01-02</a>
-                        <a href="tel:89068407555" style="display:block;">8 (906) 840-75-55</a>
+                        <a href="tel:89228180102">8 (922) 818-01-02</a>
+                        <a href="tel:89068407555">8 (906) 840-75-55</a>
                     </div>
                 </div>
+
                 <div class="contact-item-full">
-                    <i class='bx bx-time-five'></i>
+                    <i class='bx bx-time-five' aria-hidden="true"></i>
                     <div>
                         <h4>Время работы</h4>
                         <p>Ежедневно до 02:00</p>
                     </div>
                 </div>
+
                 <div class="social-buttons-full">
-                    <a href="#" class="social-full">
-                        <i class='bx bxl-whatsapp'></i>
+                    <a href="#" class="social-full" aria-label="WhatsApp">
+                        <i class='bx bxl-whatsapp' aria-hidden="true"></i>
                         WhatsApp
                     </a>
-                    <a href="#" class="social-full">
-                        <i class='bx bxl-telegram'></i>
+                    <a href="#" class="social-full" aria-label="Telegram">
+                        <i class='bx bxl-telegram' aria-hidden="true"></i>
                         Telegram
                     </a>
                 </div>
             </div>
+
             <div class="map-box-full">
-                <iframe src="https://yandex.ru/map-widget/v1/?ll=52.434909%2C53.648707&z=17&l=map&pt=52.434909%2C53.648707%2Cflag" allowfullscreen="true"></iframe>
+                <iframe 
+                    src="https://yandex.ru/map-widget/v1/?ll=52.434909%2C53.648707&z=17&l=map&pt=52.434909%2C53.648707%2Cflag" 
+                    allowfullscreen="true"
+                    loading="lazy"
+                    title="Карта — ресторан СМАК">
+                </iframe>
             </div>
         </div>
     </div>
@@ -308,13 +357,13 @@
 
 <footer>
     <div class="container">
-        <h3>СМАК</h3>
+        <img src="logo.png" alt="СМАК" class="footer-logo">
         <p>© 2026 Все права защищены</p>
     </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+<script src="script.js" defer></script>
 
 </body>
 </html>
