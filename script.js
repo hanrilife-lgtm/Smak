@@ -16,13 +16,15 @@ window.addEventListener("load", function() {
 
 var header = document.querySelector(".header");
 
-window.addEventListener("scroll", function() {
-    if (window.scrollY > 80) {
-        header.classList.add("active");
-    } else {
-        header.classList.remove("active");
-    }
-});
+if (header) {
+    window.addEventListener("scroll", function() {
+        if (window.scrollY > 80) {
+            header.classList.add("active");
+        } else {
+            header.classList.remove("active");
+        }
+    }, { passive: true });
+}
 
 // ================================
 // MOBILE MENU
@@ -35,8 +37,9 @@ document.addEventListener("DOMContentLoaded", function() {
     if (menuBtn && nav) {
         menuBtn.addEventListener("click", function(e) {
             e.stopPropagation();
-            nav.classList.toggle("open");
+            var isOpen = nav.classList.toggle("open");
             this.classList.toggle("active");
+            this.setAttribute("aria-expanded", isOpen);
         });
 
         var links = document.querySelectorAll(".nav a");
@@ -44,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
             links[i].addEventListener("click", function() {
                 nav.classList.remove("open");
                 menuBtn.classList.remove("active");
+                menuBtn.setAttribute("aria-expanded", "false");
             });
         }
 
@@ -51,13 +55,14 @@ document.addEventListener("DOMContentLoaded", function() {
             if (nav.classList.contains("open") && !nav.contains(e.target) && !menuBtn.contains(e.target)) {
                 nav.classList.remove("open");
                 menuBtn.classList.remove("active");
+                menuBtn.setAttribute("aria-expanded", "false");
             }
         });
     }
 });
 
 // ================================
-// АККОРДЕОН МЕНЮ
+// АККОРДЕОН МЕНЮ (для menu.html)
 // ================================
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -87,22 +92,55 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 // ================================
-// ОТПРАВКА ФОРМЫ В GOOGLE APPS SCRIPT
+// ОТПРАВКА ФОРМЫ (с валидацией и защитой от спама)
 // ================================
 
-var bookingForm = document.querySelector(".booking form");
+var bookingForm = document.querySelector("#bookingForm");
 
 if (bookingForm) {
     bookingForm.addEventListener("submit", function(e) {
         e.preventDefault();
 
-        var formData = new FormData(this);
-        var name = formData.get("Имя") || "Не указано";
-        var phone = formData.get("Телефон") || "Не указан";
-        var date = formData.get("Дата") || "Не указана";
-        var guests = formData.get("Гости") || "Не указано";
+        // === 1. Honeypot защита ===
+        var honeypot = this.querySelector("input[name='_company']");
+        if (honeypot && honeypot.value !== "") {
+            console.warn("Спам-бот обнаружен");
+            return;
+        }
 
-        // === ВАШ URL ИЗ GOOGLE APPS SCRIPT ===
+        // === 2. Собираем данные ===
+        var formData = new FormData(this);
+        var name = (formData.get("Имя") || "").trim();
+        var phone = (formData.get("Телефон") || "").trim();
+        var date = formData.get("Дата") || "";
+        var guests = (formData.get("Гости") || "").trim();
+
+        // === 3. Валидация ===
+        var errors = [];
+
+        if (name.length < 2) {
+            errors.push("Введите имя (минимум 2 символа)");
+        }
+
+        var phoneClean = phone.replace(/[^\d]/g, "");
+        if (phoneClean.length < 10) {
+            errors.push("Введите корректный номер телефона");
+        }
+
+        if (!date) {
+            errors.push("Выберите дату");
+        }
+
+        if (!guests || guests.length === 0) {
+            errors.push("Укажите количество гостей");
+        }
+
+        if (errors.length > 0) {
+            alert(errors.join("\n"));
+            return;
+        }
+
+        // === 4. Отправляем ===
         var url = "https://script.google.com/macros/s/AKfycby6u9t-NkTd-AxniVDyWtg1hhutcXzM2TxHz85EBX8BMWiANOfwdMlm0wLtHozud77i/exec";
 
         var button = this.querySelector("button");
@@ -158,71 +196,63 @@ if (bookingForm) {
 }
 
 // ================================
-// ИНИЦИАЛИЗАЦИЯ СЛАЙДЕРА ГАЛЕРЕИ
+// СЛАЙДЕР ГАЛЕРЕИ
 // ================================
 
 document.addEventListener("DOMContentLoaded", function() {
-    var gallerySwiper = new Swiper('.gallerySwiper', {
-        loop: true,
-        autoplay: {
-            delay: 4000,
-            disableOnInteraction: false,
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        effect: 'slide',
-        speed: 800,
-    });
+    if (typeof Swiper !== "undefined" && document.querySelector(".gallerySwiper")) {
+        new Swiper('.gallerySwiper', {
+            loop: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            effect: 'slide',
+            speed: 800,
+        });
+    }
 });
 
 // ================================
-// ИНИЦИАЛИЗАЦИЯ СЛАЙДЕРА ПОПУЛЯРНОГО МЕНЮ
+// СЛАЙДЕР ПОПУЛЯРНОГО МЕНЮ
 // ================================
 
 document.addEventListener("DOMContentLoaded", function() {
-    var popularSwiper = new Swiper('.popularSwiper', {
-        loop: true,
-        autoplay: {
-            delay: 4000,
-            disableOnInteraction: false,
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        slidesPerView: 1.2,
-        spaceBetween: 16,
-        centeredSlides: false,
-        breakpoints: {
-            480: {
-                slidesPerView: 1.5,
-                spaceBetween: 16,
+    if (typeof Swiper !== "undefined" && document.querySelector(".popularSwiper")) {
+        new Swiper('.popularSwiper', {
+            loop: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
             },
-            600: {
-                slidesPerView: 2.2,
-                spaceBetween: 20,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
             },
-            768: {
-                slidesPerView: 3,
-                spaceBetween: 24,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
             },
-            1024: {
-                slidesPerView: 4,
-                spaceBetween: 30,
+            slidesPerView: 1.2,
+            spaceBetween: 16,
+            centeredSlides: false,
+            breakpoints: {
+                480: { slidesPerView: 1.5, spaceBetween: 16 },
+                600: { slidesPerView: 2.2, spaceBetween: 20 },
+                768: { slidesPerView: 3, spaceBetween: 24 },
+                1024: { slidesPerView: 4, spaceBetween: 30 },
             },
-        },
-        speed: 800,
-    });
+            speed: 800,
+        });
+    }
 });
 
 console.log("СМАК сайт загружен");
