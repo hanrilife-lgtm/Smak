@@ -1,3 +1,12 @@
+/* =================================
+   SMAK RESTAURANT
+   PREMIUM JAVASCRIPT
+================================= */
+
+// ================================
+// LOADER
+// ================================
+
 window.addEventListener("load", function() {
     var loader = document.querySelector(".loader");
     if (loader) {
@@ -10,6 +19,10 @@ window.addEventListener("load", function() {
     }
 });
 
+// ================================
+// HEADER BLUR
+// ================================
+
 var header = document.querySelector(".header");
 
 if (header) {
@@ -21,6 +34,10 @@ if (header) {
         }
     }, { passive: true });
 }
+
+// ================================
+// MOBILE MENU
+// ================================
 
 document.addEventListener("DOMContentLoaded", function() {
     var menuBtn = document.querySelector(".mobile-menu");
@@ -53,45 +70,19 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
+// ================================
+// АККОРДЕОН МЕНЮ (независимые категории)
+// ================================
+
 document.addEventListener("DOMContentLoaded", function() {
     var headers = document.querySelectorAll(".menu-category-header");
 
     headers.forEach(function(header) {
-        header.setAttribute("tabindex", "-1");
-
-        header.addEventListener("mousedown", function(e) {
-            e.preventDefault();
-        });
-
-        header.addEventListener("touchstart", function(e) {
-            e.preventDefault();
-            header.click();
-        }, { passive: false });
-
         header.addEventListener("click", function(e) {
             e.preventDefault();
-            e.stopPropagation();
 
             var category = this.parentElement;
-            var isActive = category.classList.contains("active");
-
-            var scrollY = window.pageYOffset;
-
-            if (document.activeElement) {
-                document.activeElement.blur();
-            }
-
-            document.querySelectorAll(".menu-category").forEach(function(cat) {
-                cat.classList.remove("active");
-            });
-
-            if (!isActive) {
-                category.classList.add("active");
-            }
-
-            requestAnimationFrame(function() {
-                window.scrollTo(0, scrollY);
-            });
+            category.classList.toggle("active");
         });
     });
 
@@ -100,6 +91,10 @@ document.addEventListener("DOMContentLoaded", function() {
         firstCategory.classList.add("active");
     }
 });
+
+// ================================
+// ОГРАНИЧЕНИЕ ГОДА В ПОЛЕ ДАТЫ (4 ЦИФРЫ)
+// ================================
 
 document.addEventListener("DOMContentLoaded", function() {
     var dateInput = document.querySelector("input[type='date'][name='Дата']");
@@ -139,12 +134,15 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
+// ================================
+// ОТПРАВКА ФОРМЫ
+// ================================
+
 var bookingForm = document.querySelector("#bookingForm");
 
 if (bookingForm) {
     bookingForm.addEventListener("submit", function(e) {
         e.preventDefault();
-
 
         var honeypot = this.querySelector("input[name='_company']");
         if (honeypot && honeypot.value !== "") {
@@ -243,6 +241,10 @@ if (bookingForm) {
     });
 }
 
+// ================================
+// СЛАЙДЕР ГАЛЕРЕИ
+// ================================
+
 document.addEventListener("DOMContentLoaded", function() {
     if (typeof Swiper !== "undefined" && document.querySelector(".gallerySwiper")) {
         new Swiper('.gallerySwiper', {
@@ -264,6 +266,10 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
+
+// ================================
+// СЛАЙДЕР ПОПУЛЯРНОГО МЕНЮ
+// ================================
 
 document.addEventListener("DOMContentLoaded", function() {
     if (typeof Swiper !== "undefined" && document.querySelector(".popularSwiper")) {
@@ -294,6 +300,10 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
+
+// ================================
+// РЕГИСТРАЦИЯ SERVICE WORKER (PWA)
+// ================================
 
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
