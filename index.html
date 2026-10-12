@@ -10,12 +10,23 @@
 <meta name="author" content="СМАК">
 <meta name="theme-color" content="#0b0b0b">
 
+<!-- Favicon (из пакета) -->
+<link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+<!-- PWA манифест -->
+<link rel="manifest" href="site.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="СМАК">
+
+<!-- Open Graph -->
 <meta property="og:title" content="Ресторан СМАК">
 <meta property="og:description" content="Место для важных событий и красивых вечеров">
 <meta property="og:type" content="website">
-<meta property="og:image" content="logo.png">
-
-<link rel="icon" type="image/png" href="logo.png">
+<meta property="og:image" content="web-app-manifest-512x512.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,12 +37,14 @@
 </head>
 <body>
 
+<!-- Прелоадер -->
 <div class="loader" aria-hidden="true">
     <div class="loader-logo">
         <img src="logo.png" alt="СМАК">
     </div>
 </div>
 
+<!-- Хедер -->
 <header class="header">
     <div class="container nav-container">
         <a href="/" class="logo" aria-label="СМАК — на главную">
@@ -54,6 +67,7 @@
     </div>
 </header>
 
+<!-- Hero -->
 <section class="hero">
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="hero-content container">
@@ -74,6 +88,7 @@
     </div>
 </section>
 
+<!-- О ресторане -->
 <section class="about section" id="about">
     <div class="container">
         <div class="section-title">
@@ -101,6 +116,7 @@
     </div>
 </section>
 
+<!-- Преимущества -->
 <section class="features">
     <div class="container features-grid">
         <div class="feature-card">
@@ -129,6 +145,7 @@
     </div>
 </section>
 
+<!-- Популярное меню -->
 <section class="popular-menu section" id="menu">
     <div class="container">
         <div class="section-title">
@@ -217,6 +234,7 @@
     </div>
 </section>
 
+<!-- Банкеты -->
 <section class="banquet" id="banquet">
     <div class="container">
         <h2>Ваш праздник — наша забота</h2>
@@ -225,6 +243,7 @@
     </div>
 </section>
 
+<!-- Галерея -->
 <section class="gallery section" id="gallery">
     <div class="container">
         <div class="section-title">
@@ -251,17 +270,18 @@
     </div>
 </section>
 
+<!-- Бронирование -->
 <section class="booking section" id="booking">
     <div class="container">
         <div class="booking-box">
             <h2>Забронировать стол</h2>
 
-            <form id="bookingForm" novalidate>
+            <form id="bookingForm">
                 <!-- Honeypot для защиты от спама -->
                 <input type="text" name="_company" tabindex="-1" autocomplete="off" class="hidden-field">
 
                 <input type="text" name="Имя" placeholder="Ваше имя" required minlength="2" maxlength="50">
-                <input type="tel" name="Телефон" placeholder="Телефон" required pattern="[0-9+\s\-()]{10,20}">
+                <input type="tel" name="Телефон" placeholder="Телефон" required>
                 <input type="date" name="Дата" required>
 
                 <input 
@@ -289,12 +309,19 @@
                     <option value="100">100 человек</option>
                 </datalist>
 
+                <!-- Галочка согласия (обязательная) -->
+                <label class="checkbox-agree">
+                    <input type="checkbox" name="Согласие" required>
+                    <span>Я согласен на обработку персональных данных и ознакомлен с <a href="privacy.html" target="_blank">Политикой конфиденциальности</a></span>
+                </label>
+
                 <button type="submit" class="button">Отправить заявку</button>
             </form>
         </div>
     </div>
 </section>
 
+<!-- Контакты -->
 <section class="contacts-full section" id="contacts">
     <div class="container">
         <div class="section-title">
@@ -355,13 +382,16 @@
     </div>
 </section>
 
+<!-- Футер -->
 <footer>
     <div class="container">
         <img src="logo.png" alt="СМАК" class="footer-logo">
         <p>© 2026 Все права защищены</p>
+        <p class="footer-link"><a href="privacy.html">Политика конфиденциальности</a></p>
     </div>
 </footer>
 
+<!-- Скрипты -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
 <script src="script.js" defer></script>
 
