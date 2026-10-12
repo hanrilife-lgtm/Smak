@@ -1,0 +1,42 @@
+{
+  "name": "Ресторан СМАК — Бугуруслан",
+  "short_name": "СМАК",
+  "description": "Ресторан Смак в Бугуруслане. Банкеты, свадьбы, вкусная кухня.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0b0b0b",
+  "theme_color": "#0b0b0b",
+  "lang": "ru",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["food", "restaurant"],
+  "shortcuts": [
+    {
+      "name": "Забронировать стол",
+      "short_name": "Бронь",
+      "url": "/#booking",
+      "icons": [{ "src": "web-app-manifest-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Меню",
+      "short_name": "Меню",
+      "url": "/menu.html",
+      "icons": [{ "src": "web-app-manifest-192x192.png", "sizes": "192x192" }]
+    }
+  ]
+}
