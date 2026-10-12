@@ -1,12 +1,3 @@
-/* =================================
-   SMAK RESTAURANT
-   PREMIUM JAVASCRIPT
-================================= */
-
-// ================================
-// LOADER
-// ================================
-
 window.addEventListener("load", function() {
     var loader = document.querySelector(".loader");
     if (loader) {
@@ -19,10 +10,6 @@ window.addEventListener("load", function() {
     }
 });
 
-// ================================
-// HEADER BLUR
-// ================================
-
 var header = document.querySelector(".header");
 
 if (header) {
@@ -34,10 +21,6 @@ if (header) {
         }
     }, { passive: true });
 }
-
-// ================================
-// MOBILE MENU
-// ================================
 
 document.addEventListener("DOMContentLoaded", function() {
     var menuBtn = document.querySelector(".mobile-menu");
@@ -70,10 +53,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-// ================================
-// АККОРДЕОН МЕНЮ (для menu.html) — БЕЗ ПРЫЖКОВ
-// ================================
-
 document.addEventListener("DOMContentLoaded", function() {
     var headers = document.querySelectorAll(".menu-category-header");
 
@@ -96,25 +75,20 @@ document.addEventListener("DOMContentLoaded", function() {
             var category = this.parentElement;
             var isActive = category.classList.contains("active");
 
-            // Запоминаем позицию скролла
             var scrollY = window.pageYOffset;
 
-            // Убираем фокус со всех элементов
             if (document.activeElement) {
                 document.activeElement.blur();
             }
 
-            // Закрываем все категории
             document.querySelectorAll(".menu-category").forEach(function(cat) {
                 cat.classList.remove("active");
             });
 
-            // Открываем текущую
             if (!isActive) {
                 category.classList.add("active");
             }
 
-            // Возвращаем скролл
             requestAnimationFrame(function() {
                 window.scrollTo(0, scrollY);
             });
@@ -127,27 +101,19 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-// ================================
-// ОГРАНИЧЕНИЕ ГОДА В ПОЛЕ ДАТЫ (4 ЦИФРЫ)
-// ================================
-
 document.addEventListener("DOMContentLoaded", function() {
     var dateInput = document.querySelector("input[type='date'][name='Дата']");
 
     if (dateInput) {
-        // Устанавливаем минимум и максимум
         var today = new Date();
         var year = today.getFullYear();
 
-        // Минимум — сегодня
         var minDate = today.toISOString().split("T")[0];
         dateInput.setAttribute("min", minDate);
 
-        // Максимум — 1 год вперёд
         var maxDate = new Date(year + 1, today.getMonth(), today.getDate());
         dateInput.setAttribute("max", maxDate.toISOString().split("T")[0]);
 
-        // Дополнительная защита от ввода лишних цифр
         dateInput.addEventListener("input", function() {
             var value = this.value;
             if (value) {
@@ -159,7 +125,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
 
-        // Защита при вставке из буфера
         dateInput.addEventListener("paste", function(e) {
             e.preventDefault();
             var pasted = (e.clipboardData || window.clipboardData).getData("text");
@@ -174,24 +139,19 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-// ================================
-// ОТПРАВКА ФОРМЫ (с валидацией и защитой от спама)
-// ================================
-
 var bookingForm = document.querySelector("#bookingForm");
 
 if (bookingForm) {
     bookingForm.addEventListener("submit", function(e) {
         e.preventDefault();
 
-        // === 1. Honeypot защита ===
+
         var honeypot = this.querySelector("input[name='_company']");
         if (honeypot && honeypot.value !== "") {
             console.warn("Спам-бот обнаружен");
             return;
         }
 
-        // === 2. Проверка галочки согласия ===
         var agreeCheckbox = this.querySelector("input[name='Согласие']");
         if (!agreeCheckbox || !agreeCheckbox.checked) {
             alert("Пожалуйста, подтвердите согласие на обработку персональных данных");
@@ -199,14 +159,12 @@ if (bookingForm) {
             return;
         }
 
-        // === 3. Собираем данные ===
         var formData = new FormData(this);
         var name = (formData.get("Имя") || "").trim();
         var phone = (formData.get("Телефон") || "").trim();
         var date = formData.get("Дата") || "";
         var guests = (formData.get("Гости") || "").trim();
 
-        // === 4. Валидация ===
         var errors = [];
 
         if (name.length < 2) {
@@ -231,7 +189,6 @@ if (bookingForm) {
             return;
         }
 
-        // === 5. Отправляем ===
         var url = "https://script.google.com/macros/s/AKfycby6u9t-NkTd-AxniVDyWtg1hhutcXzM2TxHz85EBX8BMWiANOfwdMlm0wLtHozud77i/exec";
 
         var button = this.querySelector("button");
@@ -286,10 +243,6 @@ if (bookingForm) {
     });
 }
 
-// ================================
-// СЛАЙДЕР ГАЛЕРЕИ
-// ================================
-
 document.addEventListener("DOMContentLoaded", function() {
     if (typeof Swiper !== "undefined" && document.querySelector(".gallerySwiper")) {
         new Swiper('.gallerySwiper', {
@@ -311,10 +264,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
-
-// ================================
-// СЛАЙДЕР ПОПУЛЯРНОГО МЕНЮ
-// ================================
 
 document.addEventListener("DOMContentLoaded", function() {
     if (typeof Swiper !== "undefined" && document.querySelector(".popularSwiper")) {
@@ -345,10 +294,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
-
-// ================================
-// РЕГИСТРАЦИЯ SERVICE WORKER (PWA)
-// ================================
 
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
