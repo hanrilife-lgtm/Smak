@@ -1,3 +1,12 @@
+/* =================================
+   SMAK RESTAURANT
+   PREMIUM JAVASCRIPT
+================================= */
+
+// ================================
+// LOADER
+// ================================
+
 window.addEventListener("load", function() {
     var loader = document.querySelector(".loader");
     if (loader) {
@@ -62,32 +71,106 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 // ================================
-// АККОРДЕОН МЕНЮ (для menu.html)
+// АККОРДЕОН МЕНЮ (для menu.html) — БЕЗ ПРЫЖКОВ
 // ================================
 
 document.addEventListener("DOMContentLoaded", function() {
     var headers = document.querySelectorAll(".menu-category-header");
 
     headers.forEach(function(header) {
+        header.setAttribute("tabindex", "-1");
+
+        header.addEventListener("mousedown", function(e) {
+            e.preventDefault();
+        });
+
+        header.addEventListener("touchstart", function(e) {
+            e.preventDefault();
+            header.click();
+        }, { passive: false });
+
         header.addEventListener("click", function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
             var category = this.parentElement;
             var isActive = category.classList.contains("active");
 
+            // Запоминаем позицию скролла
+            var scrollY = window.pageYOffset;
+
+            // Убираем фокус со всех элементов
+            if (document.activeElement) {
+                document.activeElement.blur();
+            }
+
+            // Закрываем все категории
             document.querySelectorAll(".menu-category").forEach(function(cat) {
                 cat.classList.remove("active");
             });
 
+            // Открываем текущую
             if (!isActive) {
                 category.classList.add("active");
             }
 
-            e.preventDefault();
+            // Возвращаем скролл
+            requestAnimationFrame(function() {
+                window.scrollTo(0, scrollY);
+            });
         });
     });
 
     var firstCategory = document.querySelector(".menu-category");
     if (firstCategory) {
         firstCategory.classList.add("active");
+    }
+});
+
+// ================================
+// ОГРАНИЧЕНИЕ ГОДА В ПОЛЕ ДАТЫ (4 ЦИФРЫ)
+// ================================
+
+document.addEventListener("DOMContentLoaded", function() {
+    var dateInput = document.querySelector("input[type='date'][name='Дата']");
+
+    if (dateInput) {
+        // Устанавливаем минимум и максимум
+        var today = new Date();
+        var year = today.getFullYear();
+
+        // Минимум — сегодня
+        var minDate = today.toISOString().split("T")[0];
+        dateInput.setAttribute("min", minDate);
+
+        // Максимум — 1 год вперёд
+        var maxDate = new Date(year + 1, today.getMonth(), today.getDate());
+        dateInput.setAttribute("max", maxDate.toISOString().split("T")[0]);
+
+        // Дополнительная защита от ввода лишних цифр
+        dateInput.addEventListener("input", function() {
+            var value = this.value;
+            if (value) {
+                var parts = value.split("-");
+                if (parts[0] && parts[0].length > 4) {
+                    parts[0] = parts[0].substring(0, 4);
+                    this.value = parts.join("-");
+                }
+            }
+        });
+
+        // Защита при вставке из буфера
+        dateInput.addEventListener("paste", function(e) {
+            e.preventDefault();
+            var pasted = (e.clipboardData || window.clipboardData).getData("text");
+            var cleaned = pasted.replace(/\D/g, "").substring(0, 8);
+            if (cleaned.length === 8) {
+                var y = cleaned.substring(0, 4);
+                var m = cleaned.substring(4, 6);
+                var d = cleaned.substring(6, 8);
+                this.value = y + "-" + m + "-" + d;
+            }
+        });
     }
 });
 
@@ -108,14 +191,22 @@ if (bookingForm) {
             return;
         }
 
-        // === 2. Собираем данные ===
+        // === 2. Проверка галочки согласия ===
+        var agreeCheckbox = this.querySelector("input[name='Согласие']");
+        if (!agreeCheckbox || !agreeCheckbox.checked) {
+            alert("Пожалуйста, подтвердите согласие на обработку персональных данных");
+            agreeCheckbox.focus();
+            return;
+        }
+
+        // === 3. Собираем данные ===
         var formData = new FormData(this);
         var name = (formData.get("Имя") || "").trim();
         var phone = (formData.get("Телефон") || "").trim();
         var date = formData.get("Дата") || "";
         var guests = (formData.get("Гости") || "").trim();
 
-        // === 3. Валидация ===
+        // === 4. Валидация ===
         var errors = [];
 
         if (name.length < 2) {
@@ -140,7 +231,7 @@ if (bookingForm) {
             return;
         }
 
-        // === 4. Отправляем ===
+        // === 5. Отправляем ===
         var url = "https://script.google.com/macros/s/AKfycby6u9t-NkTd-AxniVDyWtg1hhutcXzM2TxHz85EBX8BMWiANOfwdMlm0wLtHozud77i/exec";
 
         var button = this.querySelector("button");
@@ -254,5 +345,21 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
+
+// ================================
+// РЕГИСТРАЦИЯ SERVICE WORKER (PWA)
+// ================================
+
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/service-worker.js')
+            .then(function(registration) {
+                console.log('Service Worker зарегистрирован:', registration.scope);
+            })
+            .catch(function(error) {
+                console.log('Ошибка регистрации Service Worker:', error);
+            });
+    });
+}
 
 console.log("СМАК сайт загружен");
