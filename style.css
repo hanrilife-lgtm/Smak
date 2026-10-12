@@ -879,6 +879,99 @@ BOOKING
     width: 100%;
 }
 
+/* =========================
+ГАЛОЧКА СОГЛАСИЯ
+========================= */
+
+.checkbox-agree {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #aaa;
+    line-height: 1.5;
+    user-select: none;
+    padding: 5px 0;
+}
+
+.checkbox-agree input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    border: 2px solid #444;
+    border-radius: 6px;
+    background: #181818;
+    cursor: pointer;
+    position: relative;
+    transition: 0.3s;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.checkbox-agree input[type="checkbox"]:checked {
+    background: var(--gold);
+    border-color: var(--gold);
+}
+
+.checkbox-agree input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    width: 6px;
+    height: 11px;
+    border: solid #111;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.checkbox-agree input[type="checkbox"]:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+}
+
+.checkbox-agree input[type="checkbox"]:invalid {
+    border-color: #d32f2f;
+}
+
+.checkbox-agree span {
+    flex: 1;
+}
+
+.checkbox-agree a {
+    color: var(--gold);
+    text-decoration: underline;
+    transition: 0.3s;
+}
+
+.checkbox-agree a:hover {
+    color: var(--gold-light);
+}
+
+@media (max-width: 480px) {
+    .checkbox-agree {
+        font-size: 12px;
+        gap: 10px;
+    }
+
+    .checkbox-agree input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        min-width: 20px;
+    }
+
+    .checkbox-agree input[type="checkbox"]:checked::after {
+        left: 5px;
+        top: 2px;
+        width: 5px;
+        height: 10px;
+    }
+}
+
 @media (max-width: 992px) {
     .booking-box { padding: 50px 40px; }
     .booking-box h2 { font-size: 40px; }
@@ -1036,6 +1129,20 @@ footer p {
     font-size: 14px;
 }
 
+.footer-link {
+    margin-top: 10px;
+}
+
+.footer-link a {
+    color: #555;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.footer-link a:hover {
+    color: var(--gold);
+}
+
 @media (max-width: 480px) {
     footer { padding: 35px 0; }
     footer p { font-size: 12px; }
@@ -1108,6 +1215,13 @@ FULL MENU (АККОРДЕОН)
     user-select: none;
     transition: all 0.3s ease;
     border-radius: 10px;
+    /* Убираем прокрутку при фокусе */
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.menu-category-header:focus {
+    outline: none;
 }
 
 .menu-category-header:hover {
@@ -1345,6 +1459,75 @@ FULL MENU (АККОРДЕОН)
 }
 
 /* =========================
+СТРАНИЦА ПОЛИТИКИ
+========================= */
+
+.privacy-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.privacy-content h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    color: var(--gold);
+    margin: 40px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.privacy-content h3:first-child {
+    margin-top: 0;
+}
+
+.privacy-content p {
+    color: #bbb;
+    line-height: 1.8;
+    margin-bottom: 18px;
+    font-size: 15px;
+}
+
+.privacy-content ul {
+    margin: 0 0 20px 20px;
+    padding: 0;
+}
+
+.privacy-content ul li {
+    color: #bbb;
+    line-height: 1.8;
+    margin-bottom: 10px;
+    font-size: 15px;
+    padding-left: 10px;
+}
+
+.privacy-content strong {
+    color: #fff;
+}
+
+.privacy-date {
+    margin-top: 50px;
+    color: #666 !important;
+    font-style: italic;
+    font-size: 14px !important;
+}
+
+.privacy-back {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.privacy-back .button {
+    display: inline-flex;
+}
+
+@media (max-width: 768px) {
+    .privacy-content h3 { font-size: 22px; margin: 30px 0 15px; }
+    .privacy-content p,
+    .privacy-content ul li { font-size: 14px; }
+    .privacy-back { margin-top: 40px; }
+}
+
+/* =========================
 ДОПОЛНИТЕЛЬНО
 ========================= */
 
@@ -1360,4 +1543,11 @@ button:focus-visible,
 a:focus-visible {
     outline: 2px solid var(--gold);
     outline-offset: 3px;
+}
+
+/* Отключаем плавный скролл на мобильных при аккордеоне */
+@media (max-width: 768px) {
+    html {
+        scroll-behavior: auto;
+    }
 }
